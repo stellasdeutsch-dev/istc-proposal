@@ -57,8 +57,8 @@
   .chev{transition:transform .3s var(--ease)}
   .btn:hover .chev{transform:translateX(3px)}
 
-  .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
-  .reveal.in{opacity:1;transform:none}
+  .reveal{opacity:0;transform:translateY(26px) scale(.986);filter:blur(7px);transition:opacity 1s var(--ease),transform 1s var(--ease),filter 1s var(--ease)}
+  .reveal.in{opacity:1;transform:none;filter:blur(0)}
   .d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
 
   .hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 22px 80px;position:relative;overflow:hidden}
@@ -208,9 +208,41 @@
   footer a{color:var(--ink-2)}
   footer .sep{opacity:.4;margin:0 8px}
 
+  /* ===== getlayers-style motion ===== */
+  /* custom cursor */
+  .cursor-dot,.cursor-ring{position:fixed;top:0;left:0;z-index:9999;pointer-events:none;border-radius:50%;will-change:transform}
+  .cursor-dot{width:6px;height:6px;background:var(--blue);transform:translate(-50%,-50%);mix-blend-mode:difference}
+  .cursor-ring{width:36px;height:36px;border:1.5px solid rgba(140,180,255,.55);transform:translate(-50%,-50%);transition:width .32s var(--ease),height .32s var(--ease),background-color .32s var(--ease),border-color .32s var(--ease),opacity .3s}
+  .cursor-ring.hover{width:62px;height:62px;background:rgba(41,151,255,.14);border-color:var(--blue)}
+  .cursor-ring.down{width:28px;height:28px}
+  html.has-cursor, html.has-cursor *{cursor:none !important}
+  /* word / line mask reveal */
+  .split .w{display:inline-block;overflow:hidden;vertical-align:top;line-height:1.05}
+  .split .wi{display:inline-block;transform:translateY(112%);transition:transform .9s var(--ease)}
+  .split.in .wi{transform:translateY(0)}
+  /* blur-in */
+  .blur-in{opacity:0;filter:blur(12px);transform:translateY(20px);transition:opacity 1s var(--ease),filter 1s var(--ease),transform 1s var(--ease)}
+  .blur-in.in{opacity:1;filter:blur(0);transform:none}
+  /* clip reveal for media */
+  .clip-reveal{clip-path:inset(0 0 100% 0);transform:scale(1.07);transition:clip-path 1.15s var(--ease),transform 1.15s var(--ease)}
+  .clip-reveal.in{clip-path:inset(0 0 0 0);transform:scale(1)}
+  /* marquee */
+  .marquee{overflow:hidden;background:#050507;border-top:1px solid var(--line-d);border-bottom:1px solid var(--line-d);padding:24px 0}
+  .marquee-track{display:flex;width:max-content;animation:marq 30s linear infinite}
+  .marquee:hover .marquee-track{animation-play-state:paused}
+  .marquee .mq{display:inline-flex;align-items:center;font-size:clamp(19px,2.6vw,30px);font-weight:600;letter-spacing:-.02em;color:#6b6b70;white-space:nowrap;padding:0 26px}
+  .marquee .mq b{color:#f5f5f7;font-weight:600}
+  .marquee .mq::after{content:"◆";color:var(--blue);font-size:.45em;margin-left:52px}
+  @keyframes marq{to{transform:translateX(-50%)}}
+  .magnetic{will-change:transform}
+
   @media(prefers-reduced-motion:reduce){
     *{animation:none !important;transition:none !important;scroll-behavior:auto !important}
-    .reveal{opacity:1;transform:none}
+    .cursor-dot,.cursor-ring{display:none}
+    html.has-cursor,html.has-cursor *{cursor:auto !important}
+    .split .wi,.blur-in{opacity:1;transform:none;filter:none}
+    .clip-reveal{clip-path:none;transform:none}
+    .reveal{opacity:1;transform:none;filter:none}
     .hero .eyebrow,.hero h1,.hero .lead,.hero .cta-row{opacity:1;transform:none}
   }
 </style>
@@ -248,6 +280,14 @@
   </div>
   <div class="scroll-cue"><div class="mouse"></div><span data-i18n="hero_scroll">Scroll</span></div>
 </header>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="mq"><b>TikTok</b>&nbsp;110K</span><span class="mq"><b>Telegram</b>&nbsp;9.8K</span><span class="mq"><b>Threads</b>&nbsp;20K</span><span class="mq"><b>Video</b>&nbsp;Production</span><span class="mq"><b>Paid</b>&nbsp;Social</span><span class="mq"><b>Content</b>&nbsp;Strategy</span><span class="mq"><b>EN·RU·KK</b></span><span class="mq"><b>145K</b>&nbsp;Followers</span>
+    <span class="mq"><b>TikTok</b>&nbsp;110K</span><span class="mq"><b>Telegram</b>&nbsp;9.8K</span><span class="mq"><b>Threads</b>&nbsp;20K</span><span class="mq"><b>Video</b>&nbsp;Production</span><span class="mq"><b>Paid</b>&nbsp;Social</span><span class="mq"><b>Content</b>&nbsp;Strategy</span><span class="mq"><b>EN·RU·KK</b></span><span class="mq"><b>145K</b>&nbsp;Followers</span>
+  </div>
+</div>
 
 <!-- SITUATION -->
 <section class="band paper" id="situation">
@@ -711,6 +751,7 @@
     document.querySelectorAll('.lang-switch button').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-lang')===lang);});
     document.querySelectorAll('[data-count]').forEach(function(el){if(el.dataset.done)el.textContent=fmtNum(+el.getAttribute('data-count'),lang)+(el.getAttribute('data-suffix')||'');});
     try{localStorage.setItem('istc-lang',lang);}catch(e){}
+    if(window.__afterLang)window.__afterLang();
   }
   var saved=null;try{saved=localStorage.getItem('istc-lang');}catch(e){}
   setLang(saved||'en');
@@ -726,6 +767,61 @@
   }
   var cio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){countUp(e.target);cio.unobserve(e.target);}});},{threshold:0.6});
   document.querySelectorAll('[data-count]').forEach(function(el){cio.observe(el);});
+
+  /* ===== getlayers-style motion engine ===== */
+  var fine=window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+  var aio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');aio.unobserve(e.target);}});},{threshold:0.2,rootMargin:'0px 0px -5% 0px'});
+
+  // clip reveal on the browser mockup
+  var browser=document.querySelector('.browser');
+  if(browser && !reduce){browser.classList.add('clip-reveal');aio.observe(browser);}
+
+  // word-mask reveal on section headings (re-applied on language change)
+  var splitTargets=Array.prototype.slice.call(document.querySelectorAll('h2.h2:not([data-i18n-html])'));
+  function splitEl(el){
+    var txt=(el.textContent||'').replace(/\s+/g,' ').trim();
+    el.innerHTML=txt.split(' ').map(function(tok){
+      return '<span class="w"><span class="wi">'+tok.replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</span></span>';
+    }).join(' ');
+    el.classList.add('split');
+    var wis=el.querySelectorAll('.wi');
+    for(var i=0;i<wis.length;i++){wis[i].style.transitionDelay=(i*0.04)+'s';}
+  }
+  var splitFirst=true;
+  window.__afterLang=function(){
+    if(reduce)return;
+    splitTargets.forEach(function(el){
+      splitEl(el);
+      if(splitFirst){aio.observe(el);}else{el.classList.add('in');}
+    });
+    splitFirst=false;
+  };
+  if(reduce){splitTargets.forEach(function(el){el.classList.add('in');});}
+  else{window.__afterLang();}
+
+  // custom cursor + magnetic buttons (fine pointers only)
+  if(fine && !reduce){
+    var dot=document.createElement('div');dot.className='cursor-dot';
+    var ring=document.createElement('div');ring.className='cursor-ring';
+    document.body.appendChild(dot);document.body.appendChild(ring);
+    document.documentElement.classList.add('has-cursor');
+    var mx=window.innerWidth/2,my=window.innerHeight/2,rx=mx,ry=my;
+    window.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;dot.style.transform='translate('+mx+'px,'+my+'px) translate(-50%,-50%)';},{passive:true});
+    (function loop(){rx+=(mx-rx)*0.18;ry+=(my-ry)*0.18;ring.style.transform='translate('+rx+'px,'+ry+'px) translate(-50%,-50%)';requestAnimationFrame(loop);})();
+    var hv='a,button,.magnetic,input,textarea';
+    document.addEventListener('mouseover',function(e){if(e.target.closest(hv))ring.classList.add('hover');});
+    document.addEventListener('mouseout',function(e){if(e.target.closest(hv))ring.classList.remove('hover');});
+    window.addEventListener('mousedown',function(){ring.classList.add('down');});
+    window.addEventListener('mouseup',function(){ring.classList.remove('down');});
+    document.querySelectorAll('.btn').forEach(function(b){
+      b.classList.add('magnetic');
+      b.addEventListener('mousemove',function(e){
+        var r=b.getBoundingClientRect(),x=e.clientX-(r.left+r.width/2),y=e.clientY-(r.top+r.height/2);
+        b.style.transform='translate('+(x*0.28)+'px,'+(y*0.42)+'px)';
+      });
+      b.addEventListener('mouseleave',function(){b.style.transform='';});
+    });
+  }
 })();
 </script>
 </body>
