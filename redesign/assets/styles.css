@@ -136,10 +136,10 @@ body.menu-open .mobile-menu a:nth-child(6){animation-delay:.38s}
 .crumbs span{opacity:.5;margin:0 7px}
 
 /* ---------- HERO (home) ---------- */
-.hero{position:relative;min-height:100svh;background:var(--navy);color:var(--ink);display:flex;align-items:center;overflow:hidden}
+.hero{position:relative;min-height:100svh;background:var(--navy);color:var(--ink);display:flex;flex-direction:column;overflow:hidden}
 #net{position:absolute;inset:0;width:100%;height:100%;z-index:0}
 .hero-veil{position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(11,92,173,.22),transparent 60%),linear-gradient(180deg,rgba(10,14,23,.2),rgba(10,14,23,.72) 88%);pointer-events:none}
-.hero-inner{position:relative;z-index:2;width:100%;max-width:var(--maxw);margin:0 auto;padding:130px 24px 92px;text-align:center}
+.hero-inner{position:relative;z-index:2;width:100%;max-width:var(--maxw);margin:0 auto;padding:clamp(96px,15vh,130px) 24px 44px;text-align:center;flex:1;display:flex;flex-direction:column;justify-content:center}
 .hero .eyebrow{color:#6fb0ff;margin-bottom:22px;opacity:0;animation:fu .9s var(--ease) .15s forwards}
 .hero h1{margin:0 auto 24px;max-width:14ch;opacity:0;animation:fu 1s var(--ease) .28s forwards}
 .hero h1 .grad{background:linear-gradient(180deg,#fff,#7fb4ff);-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -147,10 +147,10 @@ body.menu-open .mobile-menu a:nth-child(6){animation-delay:.38s}
 .hero .cta-row{opacity:0;animation:fu 1s var(--ease) .56s forwards}
 .hero .eyebrow,.hero h1,.hero .lead,.hero .cta-row{transform:translateY(18px)}
 @keyframes fu{to{opacity:1;transform:none}}
-.hero-strip{position:absolute;bottom:0;left:0;right:0;z-index:2;border-top:1px solid rgba(255,255,255,.08);background:rgba(10,14,23,.4);backdrop-filter:blur(8px)}
+.hero-strip{position:relative;z-index:2;border-top:1px solid rgba(255,255,255,.08);background:rgba(10,14,23,.4);backdrop-filter:blur(8px)}
 .hero-strip .row{max-width:var(--maxw);margin:0 auto;padding:15px 24px;display:flex;align-items:center;gap:12px;justify-content:center;flex-wrap:wrap;font-size:13px;color:var(--ink-2)}
 .hero-strip .flags{font-size:19px;letter-spacing:2px;line-height:1}
-@media(max-width:600px){.hero-strip{position:static;background:var(--navy-2)}}
+@media(max-width:600px){.hero-strip{background:var(--navy-2)}}
 @media(prefers-reduced-motion:reduce){.hero .eyebrow,.hero h1,.hero .lead,.hero .cta-row{opacity:1;transform:none}}
 
 /* ---------- SECTIONS ---------- */
