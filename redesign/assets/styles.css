@@ -57,7 +57,9 @@ h1,h2,h3,h4{letter-spacing:-.025em;text-wrap:balance;font-weight:600;line-height
   transition:background .5s var(--ease),backdrop-filter .5s var(--ease),border-color .5s var(--ease);border-bottom:1px solid transparent}
 .nav.scrolled{background:rgba(255,255,255,.72);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line)}
 .nav-inner{width:100%;max-width:var(--maxw);padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.brand{display:flex;align-items:center;gap:10px;flex:none;z-index:2}
+.brand{display:flex;align-items:center;gap:9px;flex:none;z-index:2}
+.brand-logo{height:27px;width:auto;display:block;flex:none}
+footer .brand-logo{height:26px}
 .brand-mark{width:28px;height:28px;border-radius:8px;border:1.5px solid var(--brand);display:grid;place-items:center;position:relative;flex:none;transition:border-color .4s}
 .brand-mark::before{content:"";width:11px;height:11px;border-radius:50%;background:var(--brand);transition:background .4s}
 .brand-txt{font-weight:600;font-size:17px;letter-spacing:-.01em;color:var(--text);transition:color .4s}

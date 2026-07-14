@@ -40,7 +40,7 @@
 
   var navHTML =
     '<nav class="nav on-dark" id="nav"><div class="nav-inner">'+
-      '<a href="index.html" class="brand"><span class="brand-mark"></span><span class="brand-txt">ISTC<small>Est. 1992</small></span></a>'+
+      '<a href="index.html" class="brand"><img src="assets/istc-mark.png" class="brand-logo" alt="ISTC logo" /><span class="brand-txt">ISTC<small>Est. 1992</small></span></a>'+
       '<ul class="nav-menu">'+
         MENU.map(function(m){
           return '<li class="nav-item'+(m.items?' has-mega':'')+(m.id===activeGroup?' active':'')+'">'+megaFor(m)+'</li>';
@@ -85,7 +85,7 @@
 
   var footHTML =
   '<footer><div class="foot-grid">'+
-    '<div class="foot-brand"><a href="index.html" class="brand"><span class="brand-mark"></span><span class="brand-txt">ISTC</span></a>'+
+    '<div class="foot-brand"><a href="index.html" class="brand"><img src="assets/istc-mark.png" class="brand-logo" alt="ISTC logo" /><span class="brand-txt">ISTC</span></a>'+
       '<p data-i18n="foot_tagline">International Science and Technology Center — an intergovernmental organization for peaceful scientific collaboration, headquartered in Astana, Kazakhstan.</p>'+
       '<div class="foot-social"><a href="https://www.linkedin.com/company/istc/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a><a href="https://www.facebook.com/istc.int/" target="_blank" rel="noopener" aria-label="Facebook">f</a><a href="https://www.youtube.com/@ISTC.1" target="_blank" rel="noopener" aria-label="YouTube">▶</a></div></div>'+
     '<div><h4 data-i18n="foot_explore">Explore</h4><ul>'+
