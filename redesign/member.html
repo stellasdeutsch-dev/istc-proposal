@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Member party — ISTC</title>
+<meta name="description" content="An ISTC member party — membership date and contribution to the Center's mission." />
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body data-page="members">
+<div id="nav-root"></div>
+
+<header class="page-header">
+  <div class="wrap">
+    <div class="crumbs"><a href="index.html">ISTC</a><span>›</span><a href="governance.html" data-i18n="nav_who_gov">Governance &amp; Members</a><span>›</span><span id="mh-crumb">—</span></div>
+    <span class="eyebrow" data-i18n="member_eyebrow">Member party</span>
+    <div class="member-hd">
+      <div>
+        <h1 class="h1" id="mh-name">—</h1>
+        <p class="lead" style="margin-top:14px"><span data-i18n="member_since">Member since</span> <b id="mh-since" style="color:#fff"></b></p>
+      </div>
+      <div class="mh-flag" id="mh-flag">🏳️</div>
+    </div>
+  </div>
+</header>
+
+<section class="band">
+  <div class="wrap">
+    <div class="info-card reveal" style="max-width:760px">
+      <h3 data-i18n="member_info_h">Information</h3>
+      <p id="md-info" style="font-size:17px;line-height:1.65;color:var(--text-2)"></p>
+    </div>
+    <a href="governance.html" class="arrow-link" style="margin-top:30px"><span class="chev">←</span> <span data-i18n="member_back">All member parties</span></a>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="glow"></div>
+  <span class="eyebrow" data-i18n="join_eyebrow">Get involved</span>
+  <h2 class="h2" data-i18n-html="join_h">Are you a scientist?<br><span class="grad">Join our expert database.</span></h2>
+  <p class="lead" data-i18n="join_lead">Add your expertise to a network spanning nearly 60 countries.</p>
+  <div class="cta-row"><a href="https://www.istc.int" target="_blank" rel="noopener" class="btn"><span data-i18n="join_btn1">Join the Expert Database</span> <span class="chev">→</span></a><a href="governance.html" class="btn ghost" data-i18n="nav_who_gov">Governance &amp; Members</a></div>
+</section>
+
+<div id="footer-root"></div>
+<script>window.__MEMBERS__={"KZ": {"name": "Republic of Kazakhstan", "since": "June 23, 1995", "info": "As the largest country in Central Asia, its role in the ISTC is particularly important. The nation is home to significant research facilities, which makes it a vital partner in nuclear non-proliferation and environmental remediation efforts. Kazakhstan’s contributions also extend to renewable energy, biotechnology, and space exploration, positioning it as a leader in regional scientific initiatives.", "flag": "🇰🇿"}, "AM": {"name": "Armenia", "since": "September 14, 1994", "info": "Armenia joined the ISTC shortly after gaining independence from the Soviet Union. Armenian researchers have significantly contributed to areas such as nuclear safety, physics, and biotechnology.", "flag": "🇦🇲"}, "GE": {"name": "Georgia", "since": "May 29, 1994", "info": "As a member of ISTC, Georgia has concentrated on nuclear and biological security, environmental research, and energy solutions. The country gains from ISTC initiatives by involving its scientists in international research efforts and enhancing regional security partnerships - Georgia’s strategic location positions it as a key player in scientific diplomacy.", "flag": "🇬🇪"}, "KG": {"name": "Kyrgyz Republic", "since": "August 24, 1995", "info": "As a part of the Central Asia, Kyrgyzstan plays a crucial role in regional scientific research. Given its mountainous terrain and environmental challenges, Kyrgyzstan benefits from ISTCs support in seismic activity monitoring, radiation and biological security, environmental research and developing sustainable scientific solutions in other important areas for the country.", "flag": "🇰🇬"}, "TJ": {"name": "Republic of Tajikistan", "since": "March 5, 2003", "info": "Republic of Tajikistan is one of the newest members of ISTC. Being a country susceptible to earthquakes and environmental threats such as flooding challenges, its membership strengthens ISTC’s research in disaster resilience and infrastructure development.", "flag": "🇹🇯"}, "EU": {"name": "European Union", "since": "July 22, 1992", "info": "The European Member States, represented through the European Union, were among the earliest founders of ISTC. Their participation has been crucial in funding scientific projects, upholding regulatory standards, and fostering cross-border collaboration. European contributions help bridge the gap between Commonwealth of Independent States (CIS) scientists and global research initiatives, promoting non-proliferation and technological innovation.", "flag": "🇪🇺"}, "US": {"name": "United States of America", "since": "Founding party · 1992", "info": "The United States was among the founding parties of the ISTC in 1992, providing major funding and scientific leadership for nonproliferation, threat-reduction and civilian research cooperation across the member states.", "flag": "🇺🇸"}, "JP": {"name": "Japan", "since": "November 27, 1992", "info": "Japan is one of ISTC’s most technologically advanced members and an early supporter of the Center’s mission. Japan has played a key role in funding R&D projects, particularly in nuclear safety, biotechnology and materials science. Japan’s membership strengthens ISTC’s global presence through its research excellence, ensuring scientific advancement and international security efforts of member counties and beyond.", "flag": "🇯🇵"}, "KR": {"name": "Republic of Korea", "since": "November 6, 1997", "info": "South Korea’s involvement in the ISTC strengthens the center’s connections with East Asia’s technological powerhouses. As a leader in nuclear energy, cybersecurity, and advanced manufacturing, South Korea contributes expertise that advances ISTC’s mission of scientific innovation and security. The nation’s involvement helps ensure emerging technologies comply with global safety and ethical standards.", "flag": "🇰🇷"}, "NO": {"name": "Norway", "since": "June 28, 1996", "info": "As a North European member of the ISTC, Norway contributes vital funding and expertise, especially in projects related to environmental issues and critical infrastructures support in Central Asia. This collaboration enhances regional safety standards and fosters sustainable development, aligning with global environmental goals.", "flag": "🇳🇴"}};</script>
+<script src="assets/components.js"></script>
+<script src="assets/i18n.js"></script>
+<script src="assets/main.js"></script>
+<script>
+(function(){
+  var params=new URLSearchParams(location.search);
+  var c=(params.get('c')||'KZ').toUpperCase();
+  var m=window.__MEMBERS__[c]||window.__MEMBERS__.KZ;
+  document.getElementById('mh-name').textContent=m.name;
+  document.getElementById('mh-crumb').textContent=m.name;
+  document.getElementById('mh-since').textContent=m.since;
+  document.getElementById('mh-flag').textContent=m.flag;
+  document.getElementById('md-info').textContent=m.info;
+  document.title=m.name+' \u2014 ISTC';
+})();
+</script>
+</body>
+</html>

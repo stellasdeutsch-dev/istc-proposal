@@ -552,3 +552,9 @@ body.menu-open .mm-simple:nth-child(5){animation-delay:.3s}
   .wm-mem,.wm-hub-ring{animation:none}
   .wm-arc-run{animation:none;stroke-dasharray:none;stroke-dashoffset:0;opacity:.55}
 }
+
+/* member detail page */
+.member-hd{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;margin-top:6px}
+.mh-flag{font-size:clamp(60px,9vw,104px);line-height:1;filter:drop-shadow(0 10px 26px rgba(0,0,0,.45))}
+a.member{cursor:pointer;color:inherit}
+a.member:hover .cn{color:var(--brand)}

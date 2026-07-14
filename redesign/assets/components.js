@@ -3,7 +3,7 @@
 (function(){
   // top-level -> which nav group is "active"
   var page = document.body.getAttribute('data-page') || '';
-  var groupOf = { home:'', about:'who', governance:'who', documents:'who',
+  var groupOf = { home:'', about:'who', governance:'who', documents:'who', members:'who',
     'what-we-do':'do', grants:'do', projects:'do',
     procurement:'proc', news:'media', expo:'expo', contact:'' };
   var activeGroup = groupOf[page] || '';
