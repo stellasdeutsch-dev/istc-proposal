@@ -528,3 +528,25 @@ body.menu-open .mm-simple:nth-child(5){animation-delay:.3s}
   .mega,.search-overlay{transition:none}
   .ms-media img,.imgcard .ic-photo img,.proj .vis.photo-vis img{transition:none}
 }
+
+/* ============================================================
+   HERO — animated world map (member countries + arcs from Astana)
+   ============================================================ */
+.worldmap{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.92}
+.wm-land{fill:rgba(96,124,170,.10);stroke:rgba(96,150,235,.16);stroke-width:.6;stroke-linejoin:round}
+.wm-mem{fill:rgba(45,120,238,.30);stroke:rgba(150,200,255,.62);stroke-width:.9;stroke-linejoin:round;animation:wmbreath 6s var(--ease) infinite}
+@keyframes wmbreath{0%,100%{fill:rgba(45,120,238,.24)}50%{fill:rgba(66,152,255,.44)}}
+.wm-arc-base{fill:none;stroke:rgba(96,160,255,.16);stroke-width:1}
+.wm-arc-run{fill:none;stroke:rgba(165,208,255,.95);stroke-width:1.7;stroke-linecap:round;stroke-dasharray:11 89;stroke-dashoffset:100;
+  filter:drop-shadow(0 0 3px rgba(120,190,255,.85));animation:wmrun 3.6s linear infinite;animation-delay:calc(var(--d,0)*.4s)}
+@keyframes wmrun{0%{stroke-dashoffset:100;opacity:0}6%{opacity:1}94%{opacity:1}100%{stroke-dashoffset:0;opacity:0}}
+.wm-node{fill:#c3e0ff;filter:drop-shadow(0 0 4px rgba(120,190,255,.9))}
+.wm-hub{fill:#ffffff;filter:drop-shadow(0 0 7px rgba(160,205,255,1))}
+.wm-hub-ring{fill:none;stroke:rgba(150,200,255,.85);stroke-width:1.6;transform-box:fill-box;transform-origin:center;animation:wmring 2.8s var(--ease) infinite}
+.wm-hub-ring.wm-r2{animation-delay:1.4s}
+@keyframes wmring{0%{transform:scale(.5);opacity:.85}72%{transform:scale(4.2);opacity:0}100%{transform:scale(4.2);opacity:0}}
+@media(max-width:600px){.worldmap{opacity:.72}}
+@media(prefers-reduced-motion:reduce){
+  .wm-mem,.wm-hub-ring{animation:none}
+  .wm-arc-run{animation:none;stroke-dasharray:none;stroke-dashoffset:0;opacity:.55}
+}
